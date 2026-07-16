@@ -1,0 +1,44 @@
+---
+description: Core MSX project conventions for this repository
+alwaysApply: true
+---
+
+# MSX development (always)
+
+## Product (locked)
+
+- Name: **TestGame** (game)
+- Machine: **MSX2** · Timing: **PAL**
+- Framework path: `MSXgl/` in this repo
+- Provisional target: `ROM_32K` until mapper/format is decided
+- Validation: openMSX only for now
+
+## Stack (do not change without an explicit task)
+
+- Language: C, with selective Z80 assembly
+- Framework: MSXgl · Compiler: SDCC (bundled with MSXgl)
+- Public build entry: `build.bat` / `Makefile`
+- Emulator: openMSX · MCP: mcp-openmsx · VCS: Git
+
+## Source of truth
+
+Before coding:
+
+1. Read `README.md` and `docs/project-requirements.md`.
+2. Inspect `Makefile` and MSXgl project config when present.
+3. Prefer APIs that exist in the installed MSXgl headers over recalled APIs.
+4. Do not change compiler, framework, ROM mapper, target machine, or output format unless asked.
+
+## Working principles
+
+- Smallest coherent change; no unrelated rewrites.
+- Preserve naming, formatting, and directory layout.
+- Keep generated files under `generated/`; never hand-edit them unless the generator requires it.
+- Do not claim success until the relevant build or emulator test has passed.
+- Report build and emulator failures accurately.
+- Emulator success ≠ all physical MSX machines.
+
+## Tool split
+
+- **Terminal**: compile, link, assets, ROM build, host unit tests, lint, files, Git.
+- **mcp-openmsx**: boot/reset, load media, registers/memory, breakpoints, keyboard, screenshots, savestates, replays.

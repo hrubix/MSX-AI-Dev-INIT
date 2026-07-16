@@ -1,0 +1,32 @@
+---
+description: C and Z80 assembly coding standards for MSX sources
+globs: src/**/*.{c,h,s,asm},include/**/*.{c,h}
+alwaysApply: false
+---
+
+# Coding standards (C / ASM)
+
+## Language choice
+
+- Default to C via MSXgl.
+- Use Z80 assembly only for clear size, speed, timing, or hardware-access wins.
+- Keep ISR / timing-critical code isolated (for example `src/interrupts.s`).
+
+## Style
+
+- Prefer clear names over abbreviations; match existing project naming.
+- Keep functions short; one responsibility per module where practical.
+- No host-only libraries in MSX target code.
+- Document non-obvious memory layout, I/O ports, and mapper assumptions near the code that depends on them.
+
+## Safety on Z80
+
+- Be explicit about interrupt state around shared data.
+- Avoid large stack frames and deep recursion.
+- Do not assume uninitialized RAM contents.
+- Prefer fixed-point / integer math; document any needed timing assumptions (PAL vs NTSC).
+
+## Headers and generated code
+
+- Project headers live in `include/`.
+- Generated sources/includes belong in `generated/` and are rebuilt from `assets/` or tools—do not duplicate them into `src/`.

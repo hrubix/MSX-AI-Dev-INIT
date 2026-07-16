@@ -1,0 +1,51 @@
+# Build output (MSXgl)
+out/
+emul/
+build/*
+!build/.gitkeep
+*.rom
+!samples/
+!samples/*.rom
+*.bin
+*.com
+*.ihx
+*.lk
+*.map
+*.mem
+*.noi
+*.rel
+*.sym
+*.lst
+*.asm.bak
+
+# Generated assets (rebuild from assets/)
+generated/*
+!generated/.gitkeep
+
+# Emulator evidence (keep dirs, ignore local runs)
+screenshots/*
+!screenshots/.gitkeep
+replays/*
+!replays/.gitkeep
+
+# MSXgl is a local clone inside this project (manage updates via git pull there)
+/MSXgl/
+
+# IDE / OS
+.vs/
+.vscode/*.log
+*.user
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Node / MCP caches
+node_modules/
+npm-debug.log*
+
+# Env with machine-local paths
+.env
+.env.local
+
+# Local MCP paths (copy from mcp.json.example)
+.cursor/mcp.json

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "mcp-openmsx": {
+      "command": "npx.cmd",
+      "args": ["-y", "@nataliapc/mcp-openmsx"],
+      "env": {
+        "OPENMSX_EXECUTABLE": "D:\\PATH\\TO\\MSX-AI-Dev-INIT\\tools\\openmsx-mcp-launcher.exe",
+        "OPENMSX_REAL_EXECUTABLE": "C:\\Program Files\\openMSX\\openmsx.exe",
+        "OPENMSX_SHARE_DIR": "C:\\Users\\YOUR_USER\\Documents\\openMSX\\share",
+        "OPENMSX_SCREENSHOT_DIR": "D:\\PATH\\TO\\MSX-AI-Dev-INIT\\screenshots",
+        "OPENMSX_REPLAYS_DIR": "D:\\PATH\\TO\\MSX-AI-Dev-INIT\\replays"
+      }
+    }
+  }
+}

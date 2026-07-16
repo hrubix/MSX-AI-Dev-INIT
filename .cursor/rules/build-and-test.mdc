@@ -1,0 +1,28 @@
+---
+description: Build, test, and emulator workflow conventions
+globs: Makefile,**/project_config.js,**/msxgl_config.h,tests/**/*,*.md
+alwaysApply: false
+---
+
+# Build and test
+
+## Build
+
+- Use the public Make / MSXgl build entry points; do not invent parallel toolchains.
+- Pin/toolchain paths belong in docs and config, not hard-coded agent guesses.
+- Put ROM and intermediate outputs under `build/` (or MSXgl `emul/` as configured)—not mixed into `src/`.
+
+## Testing with mcp-openmsx
+
+Follow patterns in `tests/`:
+
+1. Smoke: build → launch → insert ROM → reset → wait frames → screenshot + memory checks.
+2. Crash: pause → PC/SP/registers → stack → disasm near PC → RAM → map to source.
+3. Gameplay: scripted keys → screenshot → verify RAM coordinates/state.
+4. Regression: savestate → key sequence → fixed frames → compare RAM + screenshot.
+
+Store expected artifacts under `tests/expected/`. Put run evidence in `screenshots/` and `replays/`.
+
+## Docs when hardware assumptions change
+
+Update docs in the same change for target MSX generation, RAM/VRAM, VDP, ROM/mapper, extensions, timing (PAL/NTSC), and BIOS/DOS dependencies.
